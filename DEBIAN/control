@@ -5,4 +5,5 @@ Version: 1.0.0
 Description: Jenkins php project build
 Maintainer: Arbuzov <info@whitediver.com>
 Architecture: all
-Depends: jenkins, php5, ant, phpunit
+Depends: php5, ant, phpunit, git, apache2
+Recommends: jenkins
