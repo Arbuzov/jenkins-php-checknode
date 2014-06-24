@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jenkins-php" default="main">
+	<property file="${user.home}/build.properties" prefix="options" />
+
+	<target name="main">
+		<echo>Test build started</echo>
+		<echo>${ant.project.name}</echo>
+	</target>
+
+	<target name="clean">
+		<delete dir="/tmp/${ant.project.name}" />
+		<delete file="/tmp/${ant.project.name}.deb" />
+		<delete file="build/${ant.project.name}.deb" />
+	</target>
+
+
+	<target name="deb-package" depends="clean">
+		<mkdir dir="/tmp/${ant.project.name}" />
+		<property name="fakeRoot" value="/tmp/${ant.project.name}" />
+		<mkdir dir="${fakeRoot}/usr/share/ant/lib" />
+		<copy todir="${fakeRoot}/usr/share/java">
+			<fileset dir="./library">
+				<exclude name="**/readme.md" />
+			</fileset>
+		</copy>
+		<copy todir="${fakeRoot}/DEBIAN">
+			<fileset dir="./DEBIAN">
+				<exclude name="**/copyright" />
+			</fileset>
+		</copy>
+		<copy todir="${fakeRoot}/usr/share/doc/${ant.project.name}/" file="./DEBIAN/copyright" />
+		
+		<exec executable="bash" dir="${fakeRoot}/.." failonerror="true">
+			<arg value="-c" />
+			<arg value="sudo chown -R sergey:sergey ${fakeRoot}/usr/share/doc/${ant.project.name}/" />
+		</exec>
+		
+		<exec executable="bash" dir="${fakeRoot}/.." failonerror="true">
+			<arg value="-c" />
+			<arg value="ln -s ${fakeRoot}/usr/share/java/*.jar ${fakeRoot}/usr/share/ant/lib" />
+		</exec>
+		<exec executable="bash" dir="${fakeRoot}/.." failonerror="true">
+			<arg value="-c" />
+			<arg value="dpkg-deb --build ./${ant.project.name}" />
+		</exec>
+		<copy todir="build/" file="/tmp/${ant.project.name}.deb" />
+	</target>
+
+	<target name="deb-package-test">
+		<exec executable="bash" dir="/tmp/" failonerror="true">
+			<arg value="-c" />
+			<arg value="lintian ./${ant.project.name}.deb" />
+		</exec>
+		<exec executable="bash" dir="/tmp/" failonerror="true">
+			<arg value="-c" />
+			<arg value="sudo dpkg --install -y ./${ant.project.name}.deb" />
+		</exec>
+	</target>
+
+</project>
