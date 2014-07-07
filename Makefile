@@ -22,3 +22,6 @@ deb-package: clean
 	cp /tmp/$(projectName).deb build/
 deb-package-test: deb-package
 	lintian build/${projectName}.deb
+	sudo reprepro -b /mnt/repo/debian remove wheezy ${projectName}
+	sudo reprepro -b /mnt/repo/debian includedeb wheezy build/${projectName}.deb
+	sudo apt-get install jenkins-php
