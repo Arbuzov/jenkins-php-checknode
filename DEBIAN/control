@@ -4,7 +4,7 @@ Package: jenkins-php
 Version: 1.0.#build
 Maintainer: Arbuzov <info@whitediver.com>
 Architecture: all
-Depends: php5-cli, php5-common, libapache2-mod-php5, ant, php-pear, pear-phpunit-channel, git, apache2, phpunit, php-codesniffer
+Depends: php5-cli, php5-common, libapache2-mod-php5, ant, php-pear, pear-phpunit-channel, git, apache2, phpunit, php-codesniffer, php5-dev
 Recommends: jenkins
 Description: Jenkins php project build
  Library collection to deploy jenkins server for php web application

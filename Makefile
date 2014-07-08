@@ -28,4 +28,4 @@ deb-package-test: deb-package
 	sudo reprepro -b /mnt/repo/debian remove wheezy ${projectName}
 	sudo reprepro -b /mnt/repo/debian includedeb wheezy build/${projectName}.deb
 	sudo apt-get update
-	sudo apt-get upgrade jenkins-php
+	sudo apt-get -y upgrade jenkins-php
