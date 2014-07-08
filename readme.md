@@ -1,11 +1,10 @@
-Пакеты для развертывания Jenkins для php
-========================================
-*За грамотный перевод на другие языки буду благодарен*
+Package to deploy Jenkins  CI infrastructure php web-application environment
+============================================================================
 
-За последнее время было поставлено несколько десятков серверов
-для решения одной и той же задачи, а именно развертывание Jenkins
-для статического анализа и функционального тестирвания кода.
+At last six month i deployed and configure at least twenty Jenkins instances.
+All instance used by only one purpose check and test php-web-applications.
+I was tired. I think better way is create package containing all dependences and external library.
 
-Так жить нельзя и разворачивать все это руками тупо и бесперспективно
-По этому было принято решение создать пакет установка которого будет устанавливать все зависимости
-и заливать те библиотеки которые я копирую руками.
+So there is it. Now debian and later RPM version.
+
+
