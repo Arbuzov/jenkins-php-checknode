@@ -1,7 +1,7 @@
 Section: misc
 Priority: optional
 Package: jenkins-php
-Version: 1.0.0
+Version: 1.0.#build
 Maintainer: Arbuzov <info@whitediver.com>
 Architecture: all
 Depends: php5-cli, php5-common, libapache2-mod-php5, ant, php-pear, pear-phpunit-channel, git, apache2, phpunit
