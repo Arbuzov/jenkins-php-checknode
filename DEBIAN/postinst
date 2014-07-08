@@ -1,0 +1,3 @@
+sudo pear channel-discover pear.phpmd.org
+sudo pear channel-discover pear.pdepend.org
+sudo pear install --alldeps phpmd/PHP_PMD

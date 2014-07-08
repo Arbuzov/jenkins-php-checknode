@@ -14,11 +14,13 @@ deb-package: clean
 	install -d $(fakeRoot)/usr/share/doc/$(projectName)/
 	cp ./library/*.jar $(fakeRoot)/usr/share/java
 	cp ./DEBIAN/control $(fakeRoot)/DEBIAN/
+	cp ./DEBIAN/postinst $(fakeRoot)/DEBIAN/
 	sed -i 's/#build/$(BUILD_NUMBER)/' $(fakeRoot)/DEBIAN/control
 	cp ./DEBIAN/copyright $(fakeRoot)/usr/share/doc/$(projectName)/
 	gzip -c -9 ./DEBIAN/changelog > $(fakeRoot)/usr/share/doc/$(projectName)/changelog.gz
 	ln -s $(fakeRoot)/usr/share/java/*.jar $(fakeRoot)/usr/share/ant/lib
 	sudo chown -R root:root $(fakeRoot)/
+	sudo chmod 755 $(fakeRoot)/DEBIAN/postinst
 	dpkg-deb --build $(fakeRoot)
 	cp /tmp/$(projectName).deb build/
 deb-package-test: deb-package
