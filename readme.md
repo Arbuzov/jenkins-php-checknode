@@ -1,5 +1,6 @@
 Package to deploy Jenkins  CI infrastructure php web-application environment
 ============================================================================
+![Build Status](https://travis-ci.org/Arbuzov/jenkins-php.svg?branch=master)
 
 At last six month i deployed and configure at least twenty Jenkins instances.
 All instance used by only one purpose check and test php-web-applications.
