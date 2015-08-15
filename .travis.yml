@@ -1,0 +1,5 @@
+before_script:
+    sudo apt-get install lintian
+
+script:
+    make deb-package-test
