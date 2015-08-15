@@ -6,7 +6,7 @@ clean:
 	sudo rm -rf $(fakeRoot)
 	sudo rm -rf /tmp/$(projectName).deb
 	sudo rm -rf build/$(projectName).deb
-deb-package: clean
+package: clean
 	install -d $(fakeRoot)
 	install -d $(fakeRoot)/usr/share/ant/lib
 	install -d $(fakeRoot)/usr/share/java
@@ -23,8 +23,9 @@ deb-package: clean
 	sudo chmod 755 $(fakeRoot)/DEBIAN/postinst
 	dpkg-deb --build $(fakeRoot)
 	cp /tmp/$(projectName).deb build/
-deb-package-test: deb-package
+test: package
 	lintian build/${projectName}.deb
+deploy:
 	sudo reprepro -b /mnt/repo/debian remove wheezy ${projectName}
 	sudo reprepro -b /mnt/repo/debian includedeb wheezy build/${projectName}.deb
 	sudo apt-get update
