@@ -1,5 +1,19 @@
+env:
+    BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
+
 before_script:
-    sudo apt-get install lintian
+   - sudo apt-get install lintian
+   - sudo apt-get install alien
 
 script:
-    make test
+   - make test
+   
+deploy:
+  provider: releases
+  api-key: "$GITHUB_OAUTH_TOKEN"
+  file:
+    - build/jenkins-php.deb
+    - build/jenkins-php.zip
+  skip_cleanup: true
+  on:
+    tags: true
