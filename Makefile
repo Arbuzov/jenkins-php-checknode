@@ -22,7 +22,7 @@ package: clean
 	sudo chown -R root:root $(fakeRoot)/
 	sudo chmod 755 $(fakeRoot)/DEBIAN/postinst
 	dpkg-deb --build $(fakeRoot)
-	alien --to-rpm --scripts /tmp/$(projectName).deb
+	# alien --to-rpm --scripts /tmp/$(projectName).deb
 	cp /tmp/$(projectName).deb build/
 test: package
 	lintian build/${projectName}.deb

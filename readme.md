@@ -1,11 +1,19 @@
-Package to deploy Jenkins  CI infrastructure php web-application environment
-============================================================================
+Package to add all library and tool to understand PHP web project health
+========================================================================
 ![Build Status](https://travis-ci.org/Arbuzov/jenkins-php.svg?branch=master)
 
-At last six month i deployed and configure at least twenty Jenkins instances.
-All instance used by only one purpose check and test php-web-applications.
-I was tired. I think better way is create package containing all dependences and external library.
+Dependency
+* doxygen
+* pear
 
-So there is it. Now debian and later RPM version.
+Includes
+* phpcs
+* phpmd
+* jslint
+* ant ssh task
 
+How to use
+*
+*
+*
 
